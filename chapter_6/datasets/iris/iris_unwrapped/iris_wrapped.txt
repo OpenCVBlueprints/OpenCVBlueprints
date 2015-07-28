@@ -1,0 +1,16 @@
+/data/iris_unwrapped/S1001L01.jpg 1
+/data/iris_unwrapped/S1001L02.jpg 1
+/data/iris_unwrapped/S1001L03.jpg 1
+/data/iris_unwrapped/S1001L04.jpg 1
+/data/iris_unwrapped/S1001L05.jpg 1
+/data/iris_unwrapped/S1001L06.jpg 1
+/data/iris_unwrapped/S1001L07.jpg 1
+/data/iris_unwrapped/S1001L08.jpg 1
+/data/iris_unwrapped/S1001R01.jpg 2
+/data/iris_unwrapped/S1001R02.jpg 2
+/data/iris_unwrapped/S1001R03.jpg 2
+/data/iris_unwrapped/S1001R04.jpg 2
+/data/iris_unwrapped/S1001R05.jpg 2
+/data/iris_unwrapped/S1001R06.jpg 2
+/data/iris_unwrapped/S1001R07.jpg 2
+/data/iris_unwrapped/S1001R08.jpg 2

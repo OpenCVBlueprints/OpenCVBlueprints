@@ -1,0 +1,4 @@
+/data/iris_unwrapped/S1001L09.jpg 1
+/data/iris_unwrapped/S1001L10.jpg 1
+/data/iris_unwrapped/S1001R09.jpg 2
+/data/iris_unwrapped/S1001R10.jpg 2
