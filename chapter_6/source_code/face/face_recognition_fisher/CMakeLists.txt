@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( face_recognition_fisher )
+find_package( OpenCV REQUIRED )
+add_executable( face_recognition_fisher face_recognition_fisher.cpp )
+target_link_libraries( face_recognition_fisher ${OpenCV_LIBS} )

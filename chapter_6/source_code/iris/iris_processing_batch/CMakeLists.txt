@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( iris_processing_batch )
+find_package( OpenCV REQUIRED )
+add_executable( iris_processing_batch iris_processing_batch.cpp )
+target_link_libraries( iris_processing_batch ${OpenCV_LIBS} )

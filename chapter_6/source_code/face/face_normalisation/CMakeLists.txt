@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( face_normalisation )
+find_package( OpenCV REQUIRED )
+add_executable( face_normalisation face_normalisation.cpp )
+target_link_libraries( face_normalisation ${OpenCV_LIBS} )
