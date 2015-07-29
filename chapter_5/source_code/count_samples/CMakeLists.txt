@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( count_samples )
+find_package( OpenCV REQUIRED )
+add_executable( count_samples count_samples.cpp )
+target_link_libraries( count_samples ${OpenCV_LIBS} )

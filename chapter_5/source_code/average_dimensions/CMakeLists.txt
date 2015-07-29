@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( average_dimensions )
+find_package( OpenCV REQUIRED )
+add_executable( average_dimensions average_dimensions.cpp )
+target_link_libraries( average_dimensions ${OpenCV_LIBS} )

@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( precision_recall )
+find_package( OpenCV REQUIRED )
+add_executable( precision_recall precision_recall.cpp )
+target_link_libraries( precision_recall ${OpenCV_LIBS} )

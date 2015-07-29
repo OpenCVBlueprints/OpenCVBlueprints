@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( visualize_models )
+find_package( OpenCV REQUIRED )
+add_executable( visualize_models visualize_models.cpp )
+target_link_libraries( visualize_models ${OpenCV_LIBS} )
