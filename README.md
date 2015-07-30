@@ -1,6 +1,6 @@
 # OpenCVBlueprints Code Repository
 
-> OpenCV Blueprints: make your OpenCV applications smarter, faster, and more practical - go beyond the limits of your dreams!
+> OpenCV Blueprints: Expand your knowledge of computer vision by building amazing projects with OpenCV!
 
 *This GitHub repository contains the source code associated with the PacktPub released book called "OpenCV Blueprints". It contains all the software and data used for each chapter from the book, as wel as guidelines for setting up a stable OpenCV environment to use with this book. All the software is tested and working on Linux, MacOSX and Windows systems. If you do encounter any problems, do not hesitate to open up an issue so we can get back to you with help.*
 
@@ -14,10 +14,10 @@ We begin by taking a critical look at inputs, in order to decide which kinds of 
 
 By the end of the book, you will have a much richer understanding of imaging, motion, machine learning, and the architecture of computer vision libraries and applications!
 
-## What are the key features that this book will handle?
-* Capture better image data. Make your cameras and other sensors see accurately, beyond the human visual spectrum, while the competition is almost blind.
-* Build object detectors, recognizers, and trackers that learn and run faster, know more objects, and reach a higher accuracy.
-* Prepare your systems for complex environments where they must process the actions of many people or even animals.
+## What are the key features of this book?
+* Build computer vision projects like capturing qualitative image data, building object detectors and trackers, processing the actions of humans or animals and much more.
+* Develop a practical and fair interest in computer vision using the open source platform OpenCV.
+* Familiarize yourself to the different concepts, and approaches wherever critical decisions need to be made.
 
 ## What will you learn in this book?
 1. Select and configure camera systems to see invisible light, fast motion, and distant objects.
