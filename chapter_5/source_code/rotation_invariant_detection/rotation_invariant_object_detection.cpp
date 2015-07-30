@@ -32,6 +32,7 @@ static timestamp_t get_timestamp ()
 }
 
 // Return the rotation matrices for each rotation
+// The angle parameter is expressed in degrees!
 void rotate(Mat& src, double angle, Mat& dst)
 {
     Point2f pt(src.cols/2., src.rows/2.);
