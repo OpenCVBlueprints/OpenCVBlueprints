@@ -15,9 +15,9 @@ We begin by taking a critical look at inputs, in order to decide which kinds of 
 By the end of the book, you will have a much richer understanding of imaging, motion, machine learning, and the architecture of computer vision libraries and applications!
 
 ## What are the key features of this book?
-* Build computer vision projects like capturing qualitative image data, building object detectors and trackers, processing the actions of humans or animals and much more.
-* Develop a practical and fair interest in computer vision using the open source platform OpenCV.
-* Familiarize yourself to the different concepts, and approaches wherever critical decisions need to be made.
+* Build computer vision projects to capture high-quality image data, detect and track objects, process the actions of humans or animals, and much more.
+* Discover practical and interesting innovations in computer vision while building atop a mature open-source library, OpenCV 3..
+* Familiarize yourself with multiple approaches and theories wherever critical decisions need to be made.
 
 ## What will you learn in this book?
 1. Select and configure camera systems to see invisible light, fast motion, and distant objects.
