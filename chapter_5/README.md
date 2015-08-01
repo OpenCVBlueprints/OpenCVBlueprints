@@ -11,6 +11,7 @@ This folder contains all sample output that I generated for you
 ## Source code folder
 * ***average_dimensions***: defining the average dimensions for your model based on your training data
 * ***count_samples***: counting the exact amount of training samples from a given annotation file
+* ***CPU_GPU_comparison***: compare CPU and GPU processing speeds on a given input image
 * ***detect_score***: perform object detection which outputs a certainty score
 * ***detect_simple***: perform object detection without a certainty score outputted
 * ***folder_listing***: list the contents of a folder in a txt file

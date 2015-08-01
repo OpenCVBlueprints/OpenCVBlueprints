@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( CPU_GPU_comparisson )
+find_package( OpenCV REQUIRED )
+add_executable( CPU_GPU_comparisson CPU_GPU_comparisson.cpp )
+target_link_libraries( CPU_GPU_comparisson ${OpenCV_LIBS} )
