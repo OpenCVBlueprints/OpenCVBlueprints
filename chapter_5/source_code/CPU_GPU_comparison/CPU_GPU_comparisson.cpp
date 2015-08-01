@@ -14,11 +14,29 @@ This software can be used for comparing CPU and GPU object detection performance
 using namespace std;
 using namespace cv;
 
-int main()
+int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This software can be used for comparing CPU and GPU object detection performance on a given sample" << endl;
+        cout << "USAGE ./CPU_GPU_comparison -image example.jpg" << endl;
+        return 0;
+    }
+    
+    // Process the arguments
+    // Read in the parameters supplied
+    string location;
+    for(int i = 1; i < argc; ++i )
+    {
+        if( !strcmp( argv[i], "-image" ) )
+        {
+            location = argv[++i];
+        }
+    }
+
     // Read in an original image
     // Already apply processing
-    Mat image = imread("/data/ladybug.jpg", IMREAD_GRAYSCALE);
+    Mat image = imread(location, IMREAD_GRAYSCALE);
     Mat hist;
     equalizeHist(image, hist);
 

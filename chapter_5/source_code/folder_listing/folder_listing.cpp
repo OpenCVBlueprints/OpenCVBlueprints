@@ -20,7 +20,14 @@ using namespace std;
 
 int main( int argc, const char** argv )
 {
-	// Retrieve the input parameters supplied as arguments to the function
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software for making a summation file of folder contents." << endl;
+        cout << "USAGE ./folder_listing -folder <folder> -output <list.txt>" << endl;
+     	return 0;
+    }
+
+    // Retrieve the input parameters supplied as arguments to the function
     string folder;
     string output;
     for(int i = 1; i < argc; ++i )

@@ -24,6 +24,13 @@ using namespace cv;
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software for generating negative windows based on your positive dataset." << endl;
+        cout << "./generate_negatives -annotations <file.txt> -output <folder>" << endl;
+        return 0;
+    }    
+
     // Retrieve the input parameters supplied as arguments to the function
     string annotation_file;
     string storage_folder;

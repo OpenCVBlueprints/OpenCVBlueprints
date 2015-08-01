@@ -28,6 +28,13 @@ struct scored_rect {
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software that calculates precision and recall from detection and ground truth files" << endl;
+        cout << "USAGE ./precision_recall -groundtruth <file.txt> -detections <file.txt> -output <folder> -minthresh <lowest_score> -maxthresh <max_score> -stepthresh <step_score>" << endl;
+        return 0;
+    }
+
     // Read in the input arguments
     string ground_truth_file = "";
     string detection_file = "";

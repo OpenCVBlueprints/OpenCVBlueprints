@@ -21,6 +21,13 @@ using namespace std;
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "Software for defining average dimensions of a given set of annotations" << endl;
+        cout << "USAGE ./average_dimensions -annotations annotations.txt" << endl;
+     	   return 0;
+    }
+
     // Read in the parameters supplied
     string annotation_file;
     for(int i = 1; i < argc; ++i )

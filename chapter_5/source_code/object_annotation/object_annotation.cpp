@@ -153,6 +153,13 @@ void get_annotations(Mat input_image, stringstream* output_stream)
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is a software alpha release of the OpenCV annotation interface for object detection. This software allows people to import images and manually annotate regions of interest." << endl;
+        cout << "USAGE ./opencv_annotation -images <folder location> -annotations <ouput file>" << endl;
+     	   return 0;
+    }
+
     // Read in the input arguments
     string image_folder;
     string annotations;

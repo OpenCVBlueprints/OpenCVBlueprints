@@ -24,6 +24,13 @@ using namespace cv;
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software for performing a detection using a trained cascade classifier model which also outputs the certainty score needed for precision recall generation." << endl;
+        cout << "USAGE ./detect_score -model <model.xml> -testfiles <list.txt> -detections <output.txt>" << endl;
+     	   return 0;
+    }
+
     // Read in the input arguments
     string model = "";
     string testfiles = "";

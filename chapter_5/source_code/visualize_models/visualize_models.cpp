@@ -37,6 +37,14 @@ struct rect_data{
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is a software alpha release of the OpenCV interface for visualising object models and the used features to perform their detections." << endl;
+        cout << "USAGE ./visualise_models -model <model.xml> -image <ref.png> -data <output folder>" << endl;
+	cout << "LIMITS: only cascade classifier models / only stump features for now / valid sample window with model dimensions needed / HAAR and LBP features" << endl;
+     	return 0;
+    }
+
     // Read in the input arguments
     string model = "";
     string output_folder = "";

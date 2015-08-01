@@ -44,6 +44,13 @@ void rotate(Mat& src, double angle, Mat& dst)
 
 int main(int argc, char* argv[])
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software for performing rotation invariant object detection using a single orientation model trained with the OpenCV3.0 cascade classifier training tool." << endl;
+        cout << "USAGE ./rotation_invariant_detection -model <model.xml> -image <window.png> -max_angle <degrees> -step_angle <degrees>" << endl;
+        return 0;
+    }
+
     // Timing
     timestamp_t t0 = get_timestamp();
 

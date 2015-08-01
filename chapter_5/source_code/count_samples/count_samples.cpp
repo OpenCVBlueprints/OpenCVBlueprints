@@ -23,6 +23,13 @@ using namespace std;
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software for counting exactly how many object samples are available in a predefined annotations file." << endl;
+        cout << "USAGE ./count_samples -annotations <annotations.txt>" << endl;
+        return 0;
+    }
+
     // Get arguments
     string annotation_file;
     for(int i = 1; i < argc; ++i )
