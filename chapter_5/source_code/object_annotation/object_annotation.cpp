@@ -1,7 +1,9 @@
-/**********************************************************************************************
+/****************************************************************************************************
 This code is part of the code supplied with the OpenCV Blueprints book.
 It was written by Steven Puttemans, who can be contacted via steven.puttemans[at]kuleuven.be
-***********************************************************************************************
+
+License can be found at https://github.com/OpenCVBlueprints/OpenCVBlueprints/blob/master/license.txt
+*****************************************************************************************************
 This is a software alpha release of the OpenCV annotation interface for object detection.
 This software allows people to import images and manually annotate regions of interest.
 

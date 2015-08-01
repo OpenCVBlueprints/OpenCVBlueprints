@@ -1,7 +1,9 @@
-/**********************************************************************************************
+/****************************************************************************************************
 This code is part of the code supplied with the OpenCV Blueprints book.
 It was written by Steven Puttemans, who can be contacted via steven.puttemans[at]kuleuven.be
-***********************************************************************************************
+
+License can be found at https://github.com/OpenCVBlueprints/OpenCVBlueprints/blob/master/license.txt
+*****************************************************************************************************
 This is software that calculates precision and recall from detection and ground truth files
 
 USAGE:

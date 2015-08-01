@@ -1,3 +1,10 @@
+%******************************************************************************************************
+% This code is part of the code supplied with the OpenCV Blueprints book.
+% It was written by Steven Puttemans, who can be contacted via steven.puttemans[at]kuleuven.be
+%
+% License can be found at https://github.com/OpenCVBlueprints/OpenCVBlueprints/blob/master/license.txt
+% *****************************************************************************************************
+
 % Script for visualizing OpenCV precision recall data
 % Expects the data in a textfile with the following structure
 % x-coordinate y-coordinate associated-threshold
