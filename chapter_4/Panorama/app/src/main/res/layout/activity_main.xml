@@ -1,0 +1,43 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <SurfaceView
+        android:id="@+id/surfaceViewOnTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <Button
+        android:id="@+id/capture"
+        android:text="Capture"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textColor="#FFF"
+        android:background="@android:color/holo_blue_dark"
+        />
+    <Button
+        android:id="@+id/save"
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:padding="10dp"
+        android:textColor="#FFF"
+        android:background="@android:color/holo_purple"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/capture"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

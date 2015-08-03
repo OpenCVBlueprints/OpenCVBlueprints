@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/quanhua92/workspace/MyBackupCode/OpenCV_Blueprints_04_panorama_submit/Panorama/opencv-java/src/main/res"><file path="/Users/quanhua92/workspace/MyBackupCode/OpenCV_Blueprints_04_panorama_submit/Panorama/opencv-java/src/main/res/values/attrs.xml" qualifiers=""><declare-styleable name="CameraBridgeViewBase">
+       <attr format="boolean" name="show_fps"/>
+       <attr format="integer" name="camera_id">
+          <enum name="any" value="-1"/>
+          <enum name="back" value="99"/>
+          <enum name="front" value="98"/>
+       </attr>
+    </declare-styleable></file></source><source path="/Users/quanhua92/workspace/MyBackupCode/OpenCV_Blueprints_04_panorama_submit/Panorama/opencv-java/build/generated/res/rs/debug"/><source path="/Users/quanhua92/workspace/MyBackupCode/OpenCV_Blueprints_04_panorama_submit/Panorama/opencv-java/build/generated/res/generated/debug"/></dataSet><dataSet config="debug"><source path="/Users/quanhua92/workspace/MyBackupCode/OpenCV_Blueprints_04_panorama_submit/Panorama/opencv-java/src/debug/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="CameraBridgeViewBase"><attr format="boolean" name="show_fps"/><attr format="integer" name="camera_id"><enum name="any" value="-1"/><enum name="back" value="99"/><enum name="front" value="98"/></attr></declare-styleable></configuration></mergedItems></merger>
