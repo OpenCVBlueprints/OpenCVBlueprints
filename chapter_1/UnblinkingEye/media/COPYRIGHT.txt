@@ -1,0 +1,5 @@
+All photographs and videos are copyright (C) 2006-2015 Joseph Howse. All
+rights reserved.
+
+Permission is granted to use these photographs and videos for the sole purpose
+of testing or evaluating the code in OpenCV Blueprints.
