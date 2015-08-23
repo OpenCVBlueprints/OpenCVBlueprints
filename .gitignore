@@ -1,0 +1,28 @@
+#===================#
+# Output from tests #
+#===================#
+*.log
+
+#==================#
+# Python generated #
+#==================#
+*.pyc
+
+#===================#
+# PyCharm generated #
+#===================#
+.idea
+
+#==============#
+# OS generated #
+#==============#
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+ehthumbs.db
+Thumbs.db
+desktop.ini
