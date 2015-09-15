@@ -2,10 +2,10 @@
 This code is part of the code supplied with the OpenCV Blueprints book.
 It was written by Steven Puttemans, who can be contacted via steven.puttemans[at]kuleuven.be
 ***********************************************************************************************
-Software for recognizing faces
+Software for projecting back recognized faces on top of their dimensions
 
 USAGE
-./face_recognition_fisher -train train_faces.txt -test test_faces.txt
+./face_recognition_projection -train train_faces.txt -test test_faces.txt
 
 STRUCTURE PREFERRED
 You will need a train and test faces file which contains a sum of all data
@@ -43,6 +43,13 @@ static Mat norm_0_255(InputArray _src) {
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This is software for for projecting back recognized faces on top of their dimensions." << endl;
+        cout << "USAGE ./face_recognition_projection -train train_faces.txt -test test_faces.txt" << endl;
+     	   return 0;
+    }
+
     // Read in the input arguments
     string train_faces_file = "", test_faces_file = "";
     for(int i = 1; i < argc; ++i )

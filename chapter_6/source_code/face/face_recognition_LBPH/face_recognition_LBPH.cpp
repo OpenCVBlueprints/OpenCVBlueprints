@@ -22,6 +22,13 @@ using namespace cv::face;
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This software can be used for recognizing faces using the LBPH algorithm" << endl;
+        cout << "USAGE ./face_recognition_LBPH -train train_faces.txt -test test_faces.txt" << endl;
+        return 0;
+    }
+
     // Read in the input arguments
     string train_faces_file = "", test_faces_file = "";
     for(int i = 1; i < argc; ++i )
