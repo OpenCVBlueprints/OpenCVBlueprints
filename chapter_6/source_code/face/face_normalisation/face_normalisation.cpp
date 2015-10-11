@@ -16,6 +16,13 @@ using namespace cv;
 
 int main( int argc, const char** argv )
 {
+    // If no parameters are give, then a usage template should be provided
+    if(argc == 1){
+	cout << "This software can be used for etecting eyes inside face regions" << endl;
+        cout << "USAGE ./face_normalisation -folder face_images/ -model_eye eye_model.xml -output aligned_faces/" << endl;
+        return 0;
+    }
+
     // Read in the input arguments
     string folder = "", eyemodel = "", output = "";
     for(int i = 1; i < argc; ++i )

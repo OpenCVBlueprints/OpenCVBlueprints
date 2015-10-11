@@ -2,7 +2,7 @@
 This code is part of the code supplied with the OpenCV Blueprints book.
 It was written by Steven Puttemans, who can be contacted via steven.puttemans[at]kuleuven.be
 ***********************************************************************************************
-Software for recognizing faces
+Software for transforming a face to the ELBP space
 
 USAGE
 ./face_to_ELBP
