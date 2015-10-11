@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
   // Capture and display frames until any key is pressed.
   while (cv::waitKey(1) == -1) {
     status = stream.readFrame(&frame);
-    if(frame.isValid()) {
+    if (frame.isValid()) {
       cv::Mat srcMat(
           frame.getHeight(), frame.getWidth(), srcMatType,
           (void *)frame.getData(), frame.getStrideInBytes());
