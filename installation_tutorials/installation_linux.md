@@ -1,4 +1,4 @@
-# OpenCV 3 installation guide for Linux based systems
+# OpenCV 3 installation guide for Linux
 
 This is a step-by-step installation guide for installing OpenCV 3 on a Linux system. This installation guide was checked on Ubuntu 12.04 and Ubuntu 14.04. If, however, the installation does not work on your specific Linux distribution, then do open up an issues page, so we can try to help you find a solution.
 
