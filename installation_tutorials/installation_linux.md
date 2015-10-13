@@ -93,6 +93,12 @@ The following step is to actually build OpenCV for your system. This is done by
 
 Replace the number with the number of cores your system has. The install option will push everything into the standard directories after building, which is easier when compiling your programs later on. Wait till it finishes, again fingers crossed that it works without errors.
 
+## Usefull optimizations for OpenCV 3 to improve performance
+
+OpenCV 3 supports several optimization technologies to improve the performance speed of its core algorithms.
+* IPP or Integrated Performance Primitives is a technologie for intel processors to speed up processing. OpenCV 3 provides a partial free part of IPP, provided by Intel, which is enabled by default if you have an Intel processor. You can enable or disable it by adapting the `WITH_IPP` option in CMAKE. However if you have access to the [complete IPP package](https://software.intel.com/en-us/intel-ipp), then enable the option `WITH_IPP_A` which will give you an even larger performance increase.
+* TBB or Thread Building Blocks is software that enables parallelism on multicore CPU's. Several functions of OpenCV have been heavily optimized using this technique. To get this performance speed advantage, you will have to [download](https://www.threadingbuildingblocks.org/) and install TBB on your system, and then enable the `WITH_TBB` option in CMAKE. This ensures you get the latest TBB version out there. If you are fine with an older version, then also enable the `BUILD_TBB` option in CMAKE, which will use the third party package of TBB included in the OpenCV repository.
+
 ## Testing your OpenCV installation
 
 Finally, you can open up a test.cpp file in your favorite editor and add the following lines of code:
