@@ -94,25 +94,58 @@ And so on for other versions. To see a list of the available Python versions, ju
 
 ## Making a Custom Port
 
-As we have seen, the default MacPorts repository provides a nice OpenCV package that supports many configurations. However, as an advanced user, you might find that you need to customize OpenCV even further. To do so, you can copy and modify the set of files that define the OpenCV package.
+As we have seen, the default MacPorts repository provides a nice OpenCV package that supports many configurations. However, as an advanced user, you might find that you need to customize OpenCV further. To do so, you can copy and modify the set of files that define the `opencv` port.
 
-TODO
+A port's definition consists primarily of a Portfile (which is a MacPorts-specific file type) but the Portfile may be packaged with supporting files, such as patchfiles that specify modifications to the source code.
+
+To begin, let's create a folder somewhere to hold our custom port definitions. We will refer to its path as <local_repository>.
 
 Now, edit the file `/opt/local/etc/macports/sources.conf`. (If MacPorts is installed in a non-default location, this file's location will differ accordingly.) Find the line `rsync://rsync.macports.org/release/ports/ [default]` and, just above it, add the following line:
 
     file://<local_repository>
 
-For example, if `<local_repository>` is `/Users/Me/Portfiles`, add this line:
+For example, if `<local_repository>` is `/Users/Me/Ports`, we should now have these two lines somewhere in `sources.conf`:
 
-    file:///Users/Me/Portfiles
+    file:///Users/Me/Ports
+    rsync://rsync.macports.org/release/ports/ [default]
 
 Note that the third slash in `file:///` is required in order to refer to the root directory.
 
-Save `sources.conf`. Now, MacPorts will search for Portfiles in `<local_repository>` first and the default online repository second.
+Save `sources.conf`. Now, MacPorts will search for Portfiles in `<local_repository>` first and the default, online repository second.
 
-TODO
+Next, we will fetch the latest port definitions from the default repository, and we will copy the definition of the default `opencv` port into our local repository:
 
+    $ sudo port selfupdate
     $ mkdir <local_repository>/graphics/
-    $ cp /opt/local/var/macports/sources/rsync.macports.org/release/ports/graphics/opencv <local_repository>/graphics
+    $ cp /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/graphics/opencv <local_repository>/graphics
 
-TODO
+Now, edit `<local_repository>/graphics/opencv/Portfile`. Among other things, this file specifies the following:
+
+1. The location of OpenCV's source code (on Sourceforge)
+2. Dependencies on other MacPorts packages
+3. Patchfiles (in `<local_repository>/graphics/opencv/files`) to modify OpenCV's source code
+4. CMake flags to configure OpenCV
+5. Variants of this MacPorts package
+
+For the details of the Portfile format, refer to the [MacPorts Guide](http://guide.macports.org/#development). Note that patchfiles files are created using the `diff` command line tool to log differences between two file versions, as described in the Guide.
+
+For the details of OpenCV's CMake options, refer to the top-level [CMakeLists.txt](https://github.com/Itseez/opencv/blob/master/CMakeLists.txt) file in OpenCV's source code.
+
+Make any changes you want and save the Portfile. Now, we must generate our local repository's index file, which will describe our port so that MacPorts can find it:
+
+    $ cd <local_repository>
+    $ portindex
+
+If we have previously installed the default `opencv` port, we might want to uninstall it now:
+
+    $ sudo port uninstall opencv
+
+Henceforth, we can install our custom `opencv` port in the normal manner:
+
+    $ sudo port install opencv +python27 +eigen +tbb +opencl
+
+Remember that our local repository's `opencv` port will take precedence over the default, online repository's `opencv` port because of the order in which they are listed in `sources.conf`.
+
+## Summary
+
+We have learned to use MacPorts to customize and install OpenCV, with support for Python and certain optimizations.
