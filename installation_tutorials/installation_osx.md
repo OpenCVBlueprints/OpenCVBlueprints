@@ -97,3 +97,22 @@ And so on for other versions. To see a list of the available Python versions, ju
 As we have seen, the default MacPorts repository provides a nice OpenCV package that supports many configurations. However, as an advanced user, you might find that you need to customize OpenCV even further. To do so, you can copy and modify the set of files that define the OpenCV package.
 
 TODO
+
+Now, edit the file `/opt/local/etc/macports/sources.conf`. (If MacPorts is installed in a non-default location, this file's location will differ accordingly.) Find the line `` and, just above it, add the following line:
+
+    file://<local_repository>
+
+For example, if `<local_repository>` is `/Users/Me/Portfiles`, add this line:
+
+    file:///Users/Me/Portfiles
+
+Note that the third slash in `file:///` is required in order to refer to the root directory.
+
+Save `sources.conf`. Now, MacPorts will search for Portfiles in `<local_repository>` first and the default online repository second.
+
+TODO
+
+    $ mkdir <local_repository>/graphics/
+    $ cp /opt/local/var/macports/sources/rsync.macports.org/release/ports/graphics/opencv <local_repository>/graphics
+
+TODO
