@@ -98,7 +98,7 @@ As we have seen, the default MacPorts repository provides a nice OpenCV package 
 
 TODO
 
-Now, edit the file `/opt/local/etc/macports/sources.conf`. (If MacPorts is installed in a non-default location, this file's location will differ accordingly.) Find the line `` and, just above it, add the following line:
+Now, edit the file `/opt/local/etc/macports/sources.conf`. (If MacPorts is installed in a non-default location, this file's location will differ accordingly.) Find the line `rsync://rsync.macports.org/release/ports/ [default]` and, just above it, add the following line:
 
     file://<local_repository>
 
