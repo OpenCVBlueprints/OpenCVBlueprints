@@ -60,13 +60,13 @@ Again, make sure that you have the correct branch by doing:
 
 Now, your basic system is set up to go and be installed. 
 
-## Running CMAKE to configure, build and install OpenCV 3
+## Running CMake to configure, build and install OpenCV 3
 
 Start by navigating to the build directory inside your OpenCV folder. Fire up the building process by executing
 
 `cmake-gui ..`
 
-which basically fires up the CMAKE graphical interface (a bit easier to configure for new users). Of course, if you have a non-graphical Linux system, you might want to try the `ccmake` package which can be installed through `sudo apt-get install cmake-curses-gui`.
+which basically fires up the CMake graphical interface (a bit easier to configure for new users). Of course, if you have a non-graphical Linux system, you might want to try the `ccmake` package which can be installed through `sudo apt-get install cmake-curses-gui`.
 
 The first window you will get is, a window asking you to define where your source folder and build folder are. However, since we ran the `cmake` command from the correct folder, pointing it to the source folder which is one level up using the `..` syntax, we are already set up correctly. Now, hit the `Configure` button!
 
@@ -76,16 +76,16 @@ The configuration will first ask you what generator must be used for this projec
 
 ![first run](https://github.com/OpenCVBlueprints/OpenCVBlueprints/blob/master/installation_tutorials/images/first_run.png)
 
-The top part, all in red, contains all the fields where CMAKE still wants your input. The bottom part is a wrap-up of all the things that will be configured in your OpenCV installation. The basic rule is, as long CMAKE keeps asking for input with red fields, the configure stage is not complete yet. Now, start browsing the top part and make sure that you find the field `OPENCV_EXTRA_MODULES_PATH` and make sure that it points to your opencv_contrib modules folder. In our case, this will be `/home/spu/Documents/github/opencv_contrib/modules`. Now hit the configure button again!
+The top part, all in red, contains all the fields where CMake still wants your input. The bottom part is a wrap-up of all the things that will be configured in your OpenCV installation. The basic rule is, as long CMake keeps asking for input with red fields, the configure stage is not complete yet. Now, start browsing the top part and make sure that you find the field `OPENCV_EXTRA_MODULES_PATH` and make sure that it points to your opencv_contrib modules folder. In our case, this will be `/home/spu/Documents/github/opencv_contrib/modules`. Now hit the configure button again!
 
 Now, in our second run, we will make the following adaptations:
 * From the new modules that are introduced, we only select `BUILD_opencv_face, BUILD_opencv_xfeatures2d and BUILD_opencv_ximproc`. All other new modules that are in red can be disabled. We do not need them for the book and they can only cause things to break down.
 * Go down to the field `CMAKE_BUILD_TYPE` and select `Debug`. This ensures that we get meaningful errors when OpenCV decides to crash.
 * *IF YOU NEED CUDA*: Find the field `CUDA_ARCH_BIN and CUDA_ARCH_PTX` and leave only the value specific for your card, which can be found [here](https://developer.nvidia.com/cuda-gpus). This ensures that building goes way faster! For example, my card are Kepler K2000 cards and I set both values to 3.0.
-* *IF YOU DO **NOT** NEED CUDA*: Make sure that the following fields are disabled: `WITH_CUBLAS, WITH_CUDA and WITH_CUFFT`
-* *IF YOU DO **NOT** NEED OPENCL*: Make sure that the following fields are disabled: `WITH_OPENCL, WITH_OPENCLAMDBLAS and WITH_OPENCLAMDFFT`
+* *IF YOU DO __NOT__ NEED CUDA*: Make sure that the following fields are disabled: `WITH_CUBLAS, WITH_CUDA and WITH_CUFFT`
+* *IF YOU DO __NOT__ NEED OPENCL*: Make sure that the following fields are disabled: `WITH_OPENCL, WITH_OPENCLAMDBLAS and WITH_OPENCLAMDFFT`
 
-Now hit the configure button again! Cross your fingers that there is not a single red field anymore. In that case hit the generate button. If there still a red field and you cannot solve it yourself, open up a question at our [issues page](https://github.com/OpenCVBlueprints/OpenCVBlueprints/issues) and we will help you as soon as possible. If all went fine, you can close down CMAKE.
+Now hit the configure button again! Cross your fingers that there is not a single red field anymore. In that case hit the generate button. If there still a red field and you cannot solve it yourself, open up a question at our [issues page](https://github.com/OpenCVBlueprints/OpenCVBlueprints/issues) and we will help you as soon as possible. If all went fine, you can close down CMake.
 
 The following step is to actually build OpenCV for your system. This is done by
 
@@ -93,11 +93,11 @@ The following step is to actually build OpenCV for your system. This is done by
 
 Replace the number with the number of cores your system has. The install option will push everything into the standard directories after building, which is easier when compiling your programs later on. Wait till it finishes, again fingers crossed that it works without errors.
 
-## Usefull optimizations for OpenCV 3 to improve performance
+## Useful optimizations for OpenCV 3 to improve performance
 
-OpenCV 3 supports several optimization technologies to improve the performance speed of its core algorithms.
-* IPP or Integrated Performance Primitives is a technologie for intel processors to speed up processing. OpenCV 3 provides a partial free part of IPP, provided by Intel, which is enabled by default if you have an Intel processor. You can enable or disable it by adapting the `WITH_IPP` option in CMAKE. However if you have access to the [complete IPP package](https://software.intel.com/en-us/intel-ipp), then enable the option `WITH_IPP_A` which will give you an even larger performance increase.
-* TBB or Thread Building Blocks is software that enables parallelism on multicore CPU's. Several functions of OpenCV have been heavily optimized using this technique. To get this performance speed advantage, you will have to [download](https://www.threadingbuildingblocks.org/) and install TBB on your system, and then enable the `WITH_TBB` option in CMAKE. This ensures you get the latest TBB version out there. If you are fine with an older version, then also enable the `BUILD_TBB` option in CMAKE, which will use the third party package of TBB included in the OpenCV repository.
+OpenCV 3 supports several optimization technologies to improve the speed of its core algorithms.
+* IPP or Integrated Performance Primitives is a technology for Intel processors to speed up processing. OpenCV 3 provides a partial free version of IPP, provided by Intel, which is enabled by default if you have an Intel processor. You can enable or disable it by setting the `WITH_IPP` option in CMake. However, if you have access to the [complete IPP package](https://software.intel.com/en-us/intel-ipp), then enable the option `WITH_IPP_A` which will give you an even larger performance increase.
+* TBB or Thread Building Blocks is software that enables parallelism on multicore CPUs. Several functions of OpenCV have been heavily optimized using this technique. To get this performance speed advantage, you will have to [download](https://www.threadingbuildingblocks.org/) and install TBB on your system, and then enable the `WITH_TBB` option in CMake. This ensures you get the latest TBB version out there. If you are fine with an older version, then also enable the `BUILD_TBB` option in CMake, which will use the third-party package of TBB included in the OpenCV repository.
 
 ## Testing your OpenCV installation
 
