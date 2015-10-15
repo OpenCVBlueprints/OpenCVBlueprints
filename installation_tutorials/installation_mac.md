@@ -12,7 +12,7 @@ This tutorial will focus on the use of MacPorts, which has well-supported, confi
 
 MacPorts is a third-party, open-source tool, but it depends on Xcode and the Xcode Command Line Tools. To install MacPorts and its dependencies, follow the MacPorts [installation guide](https://www.macports.org/install.php).
 
-## Installing a Port
+## Installing a port
 
 After installing MacPorts, we can use Terminal commands to install packages, also known as **ports**. A port may have **variants**, which are configuration options. To install a port with specified variants, we can use a command in the following format:
 
@@ -64,7 +64,7 @@ Alternatively, to install OpenCV with optimizations and Python 3.4 bindings, run
 
 Dependencies, including Python, will also be installed.
 
-## Running a Script with MacPorts Python
+## Running a script with MacPorts Python
 
 Note that MacPorts uses its own installation of Python (hereafter, "MacPorts Python"), rather than the Python installation that is part of the Mac system (hereafter, "Apple Python"). This is good because the system relies on the behavior of Apple Python and its libraries, so we should avoid modifying them. Moreover, system updates can wipe out any custom Apple Python libraries that the user may have installed.
 
@@ -92,7 +92,7 @@ And so on for other versions. To see a list of the available Python versions, ju
 
     $ sudo port select python
 
-## Making a Custom Port
+## Making a custom port
 
 As we have seen, the default MacPorts repository provides a nice OpenCV package that supports many configurations. However, as an advanced user, you might find that you need to customize OpenCV further. To do so, you can copy and modify the set of files that define the `opencv` port.
 
