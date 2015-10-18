@@ -32,6 +32,7 @@ This will produce output similar to the following:
 
 ```
 opencv has the variants:
+   contrib: Build OpenCV with extra modules.
    dc1394: Use libdc1394 for FireWire camera. Breaks compatibility with Apple
            iSight FireWire camera.
    debug: Enable debug binaries
@@ -52,15 +53,15 @@ opencv has the variants:
    vtk: Include VTK support.
 ```
 
-A few variants from this list are relevant to OpenCV Blueprints. Some chapters use the Python bindings (your choice of Python 2.7 or 3.4). Also, some chapters use functionality that is greatly accelerated by OpenCV's TBB optimizations. (Intel Thread Building Blocks, or TBB, is a library for CPU multiprocessing.) Notably, these TBB optimizations are beneficial to LBP cascade classification. We will also enable optimizations that use Eigen (for CPU vector processing) and OpenCL (for GPU multiprocessing).
+A few variants from this list are relevant to OpenCV Blueprints. Some chapters use the Python bindings (your choice of Python 2.7 or 3.4). Also, the extra `contrib` (contributed, third-party) modules are essential to some chapters. For example, these modules include functionality for face recognition. Moreover, some chapters use functionality that is greatly accelerated by OpenCV's TBB optimizations. (Intel Thread Building Blocks, or TBB, is a library for CPU multiprocessing.) Notably, the TBB optimizations are beneficial to LBP cascade classification, which we use to detect faces and other classes of objects. Finally, we will enable optimizations that use Eigen (for CPU vector processing) and OpenCL (for GPU multiprocessing).
 
-To install OpenCV with optimizations and Python 2.7 bindings, run the following command:
+To install OpenCV with optimizations, extra modules, and Python 2.7 bindings, run the following command:
 
-    $ sudo port install opencv +python27 +eigen +tbb +opencl
+    $ sudo port install opencv +python27 +contrib +eigen +tbb +opencl
 
-Alternatively, to install OpenCV with optimizations and Python 3.4 bindings, run the following command:
+Alternatively, to install OpenCV with optimizations, extra modules, and Python 3.4 bindings, run the following command:
 
-    $ sudo port install opencv +python34 +eigen +tbb +opencl
+    $ sudo port install opencv +python34 +contrib +eigen +tbb +opencl
 
 Dependencies, including Python, will also be installed.
 
@@ -142,7 +143,7 @@ If we have previously installed the default `opencv` port, we might want to unin
 
 Henceforth, we can install our custom `opencv` port in the normal manner:
 
-    $ sudo port install opencv +python27 +eigen +tbb +opencl
+    $ sudo port install opencv +python27 +contrib +eigen +tbb +opencl
 
 Remember that our local repository's `opencv` port will take precedence over the default, online repository's `opencv` port because of the order in which they are listed in `sources.conf`.
 
