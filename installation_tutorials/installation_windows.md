@@ -7,7 +7,7 @@ In order to get OpenCV 3 up and running under any Windows operating system, you 
 The easiest way to install OpenCV 3 on Windows is by using prebuilt library packages provided by the OpenCV team. You can find those downloads at [the official download page](http://opencv.org/downloads.html) and at the [sourgeforge OpenCV download page](http://sourceforge.net/projects/opencvlibrary/files/opencv-win/). The latter has all the different stable versions up to OpenCV 3.0.0.
 
 Once you have downloaded the package, in our case the 3.0.0 download, you need to apply the following steps
- 1. Make sure you have admin rights. Unpack the self-extracting archive into a folder of your choosing, for example `D:\OpenCV\`. But this can be any path on your system.
+ 1. Make sure you have admin rights. Unpack the self-extracting archive into a folder of your choosing, for example `C:\OpenCV\`. But this can be any path on your system.
  2. Make sure that you set the OpenCV environment variable correctly. This one will ensure that your system knows where OpenCV 3 is installed. To do this:
   * Start by opening a command line interface.
   * Type in the command that corresponds to your system configuration.
@@ -41,7 +41,25 @@ TODO
 
 ### Obtaining the source code of OpenCV and the contributed modules
 
-TODO
+Let's suppose that we want to put the source code of OpenCV and the contributed modules in subdirectories of `C:\OpenCV`. In Command Prompt or Git Bash, use the following commands to create the parent directory and to get the latest source code from GitHub:
+
+```
+mkdir C:\OpenCV
+cd C:\OpenCV
+git clone https://github.com/Itseez/opencv.git opencv
+git clone https://github.com/Itseez/opencv_contrib.git opencv_contrib
+```
+
+Now, we should have the following directory structure:
+
+```
+C:
+  OpenCV
+    opencv
+    opencv_contrib
+```
+
+Alternatively, you may modify the preceding commands to check out the source code to other paths instead.
 
 ### Creating the Visual Studio solution with CMake
 
@@ -49,7 +67,7 @@ We can create either a 32-bit or a 64-bit OpenCV library project. The relevant c
 
 #### 32-bit
 
-Run commands similar to the following (but change the paths if they differ in your setup):
+In Command Prompt, run commands similar to the following (but change the paths if they differ in your setup):
 
 ```
 mkdir C:\OpenCV\x86
@@ -70,7 +88,7 @@ This will create a Visual Studio 2013 solution at `C:\OpenCV\x86\OpenCV.sln`.
 
 #### 64-bit
 
-Run commands similar to the following (but change the paths if they differ in your setup):
+In Command Prompt, run commands similar to the following (but change the paths if they differ in your setup):
 
 ```
 mkdir C:\OpenCV\x64
