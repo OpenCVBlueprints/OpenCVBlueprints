@@ -8,7 +8,7 @@ This is a software alpha release of the OpenCV annotation interface for object d
 This software allows people to import images and manually annotate regions of interest.
 
 USAGE:
-./opencv_annotation -images <folder location> -annotations <ouput file>
+./opencv_annotation -images <inputfile> -annotations <ouputfile>
 ***********************************************************************************************/
 
 #include <opencv2/core.hpp>
@@ -156,18 +156,18 @@ int main( int argc, const char** argv )
     // If no parameters are give, then a usage template should be provided
     if(argc == 1){
 	cout << "This is a software alpha release of the OpenCV annotation interface for object detection. This software allows people to import images and manually annotate regions of interest." << endl;
-        cout << "USAGE ./opencv_annotation -images <folder location> -annotations <ouput file>" << endl;
+        cout << "USAGE ./opencv_annotation -images <images.txt> -annotations <annotations.txt>" << endl;
      	   return 0;
     }
 
     // Read in the input arguments
-    string image_folder;
+    string images_file;
     string annotations;
     for(int i = 1; i < argc; ++i )
     {
         if( !strcmp( argv[i], "-images" ) )
         {
-            image_folder = argv[++i];
+            images_file = argv[++i];
         }
         else if( !strcmp( argv[i], "-annotations" ) )
         {
@@ -178,10 +178,21 @@ int main( int argc, const char** argv )
     // Create the outputfilestream
     ofstream output(annotations.c_str());
 
-    // Return the image filenames inside the image folder
-    vector<String> filenames;
-    String folder(image_folder);
-    glob(folder, filenames);
+    // Use the positive sample file to generate a filenames element
+    ifstream input(images_file.c_str());
+    string current_line;
+    vector<string> filenames;
+    while ( getline(input, current_line) ){
+        vector<string> line_elements;
+        stringstream temp (current_line);
+        string first_element;
+        getline(temp, first_element, ' ');
+        filenames.push_back(first_element);
+    }
+    input.close();
+
+    // Create output file stream
+    ofstream output (detection_result.c_str());
 
     // Loop through each image stored in the images folder
     // Create and temporarily store the annotations
