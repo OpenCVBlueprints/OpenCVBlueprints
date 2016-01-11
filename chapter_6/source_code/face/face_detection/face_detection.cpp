@@ -40,7 +40,6 @@ int main( int argc, const char** argv )
     webcam >> image;
 
     // Pre-process the grabbed frame
-    resize(image, image, Size(640,360));
     cvtColor(image, image_gray, COLOR_BGR2GRAY);
     equalizeHist(image_gray, image_hist);
 
