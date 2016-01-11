@@ -38,4 +38,10 @@ Now go back to the [OpenCVBlueprints pull request page](https://github.com/OpenC
 
 Now wait until one of the authers evaluates your fix and merges it inside the master branch. From that moment you will be thanked and you will get mentioned on our contributers wall!
 
- 
+Finally I would love to ask people to report the same errate to [the official Pact Publishing errata website](https://www.packtpub.com/books/content/support/22418) for our book so that the official code package gets an update also.
+
+## Contribution wall of fame
+
+**05/01/2016** - *Moreli* - Reported code mismatches with book inside samples - [more info](https://github.com/OpenCVBlueprints/OpenCVBlueprints/issues/1)
+
+**23/11/2015** - *Can Ergün* - Reported erratum about HAAR wavelets
