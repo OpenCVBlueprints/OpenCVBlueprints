@@ -191,9 +191,6 @@ int main( int argc, const char** argv )
     }
     input.close();
 
-    // Create output file stream
-    ofstream output (detection_result.c_str());
-
     // Loop through each image stored in the images folder
     // Create and temporarily store the annotations
     // At the end write everything to the annotations file
