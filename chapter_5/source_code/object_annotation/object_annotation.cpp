@@ -11,9 +11,7 @@ USAGE:
 ./opencv_annotation -images <inputfile> -annotations <ouputfile>
 ***********************************************************************************************/
 
-#include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
+#include <opencv2/opencv.hpp>
 
 #include <fstream>
 #include <iostream>
@@ -96,7 +94,7 @@ void get_annotations(Mat input_image, stringstream* output_stream)
         //      c = 99		    add rectangle to current image
         //	    n = 110		    save added rectangles and show next image
         //	    <ESC> = 27      exit program
-        key_pressed = waitKey(0);
+        key_pressed = waitKey(0) & 0xFF;
         switch( key_pressed )
         {
         case 27:
