@@ -6,20 +6,20 @@ This is a step-by-step installation guide for installing OpenCV 3 on a Linux sys
 
 You should start by firing up a console window. The complete guide will be based on console commands, since Linux distributions do not all cover a graphical interface. Once you have fired up the console window, you can start by installing some basic packages. This can be done with the following installation commands:
 
-```C++
-  // Install some basic libraries used by the OpenCV software
-  // Start with a good compiler
-  apt-get install build-essentials
-  // Now install the required packages for installing OpenCV in linux
-  apt-get install cmake cmake-qt-gui git pkg-config libgtk2.0-dev libavcodec-dev libformat-dev libswscale-dev
-  // If you want python support you should install python and the numpy library
-  apt-get install python-dev python-numpy
-  // If you want some free optimization packages then run this line
-  apt-get install libtbb2 libtbb-dev
-  // If you want support for the most standard image formats then run this line
-  apt-get install libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
-  // If you want Eigen support for mathematical calculations
-  apt-get install libeigen-dev libeigen2-dev libeigen3-dev
+```Bash
+  # Install some basic libraries used by OpenCV
+  # Start with a good compiler
+  sudo apt-get install build-essential
+  # Now install the required packages for installing OpenCV in Linux
+  sudo apt-get install cmake cmake-qt-gui git pkg-config libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev
+  # If you want Python support you should install Python and the NumPy library
+  sudo apt-get install python-dev python-numpy
+  # If you want some free optimization packages then run this line
+  sudo apt-get install libtbb2 libtbb-dev
+  # If you want support for most standard image formats then run this line
+  sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+  # If you want Eigen support for mathematical calculations then run this line
+  sudo apt-get install libeigen2-dev libeigen3-dev
 ```
 
 Thanks to the geniusness of OpenCV, most optimization packages of OpenCV are included as source files and built during installation of OpenCV, so you are not expected to add anything other than the above to get a basic system to work.
