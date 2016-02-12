@@ -95,10 +95,6 @@ def main():
     while True:
         time.sleep(detection_interval)
         success, bgr = cap.read(bgr)
-        
-        if cv2.waitKey(5) & 0xFF == ord('q'):
-            break
-        
         if success:
             gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY, gray)
             gray = cv2.equalizeHist(gray, gray)
