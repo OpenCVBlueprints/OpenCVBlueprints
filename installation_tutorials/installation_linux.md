@@ -119,6 +119,18 @@ int main( int argc, char* argv[] )
 }
 ```
 
-Make sure that you replace the image path with an actual image path that exists! Then, configure your editor to include the build and installed OpenCV repositories. Under Ubuntu, you can do that by pointing your linker to <pre>`pkg-config opencv --libs`</pre> which will auto grab all the dependencies. Since all headers are installed into `/usr/local/lib/`, you do not need to explicitly tell that to the system, since Ubuntu can handle that itself.
+Make sure that you replace the image path with an actual image path that exists! Then, configure your editor to include the build and installed OpenCV repositories. Under Ubuntu, you can do that by pointing your linker to 
+
+```
+`pkg-config opencv --libs`
+```
+
+which will auto grab all the dependencies. This can be done inside your IDE on the linker settings tab or by executing the following command 
+
+```
+$ g++ test.cpp -o test `pkg-config opencv --libs`
+```
+
+using the command line. Since all headers are installed into `/usr/local/lib/`, you do not need to explicitly tell that to the system, since Ubuntu can handle that itself.
 
 **Enjoy your working OpenCV 3 installation!**
