@@ -4,8 +4,10 @@ It was written by Steven Puttemans, who can be contacted via steven.puttemans[at
 
 License can be found at https://github.com/OpenCVBlueprints/OpenCVBlueprints/blob/master/license.txt
 *****************************************************************************************************
-This is a software alpha release of the OpenCV annotation interface for object detection.
+This is a basic release of the OpenCV annotation interface for object detection.
 This software allows people to import images and manually annotate regions of interest.
+The official and more updated tool can be found here:
+https://github.com/Itseez/opencv/tree/master/apps/annotation
 
 USAGE:
 ./opencv_annotation -images <inputfile> -annotations <ouputfile>
@@ -182,11 +184,7 @@ int main( int argc, const char** argv )
     string current_line;
     vector<string> filenames;
     while ( getline(input, current_line) ){
-        vector<string> line_elements;
-        stringstream temp (current_line);
-        string first_element;
-        getline(temp, first_element, ' ');
-        filenames.push_back(first_element);
+        filenames.push_back(current_line);
     }
     input.close();
 
@@ -209,3 +207,4 @@ int main( int argc, const char** argv )
 
     return 0;
 }
+
