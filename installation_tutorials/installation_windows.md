@@ -79,7 +79,7 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE ^
 -DTBB_LIB_DIR:PATH=C:/TBB/lib/ia32/vc12 ^
 -DPYTHON2_LIBRARY=C:/Python27/libs/python27.lib ^
 -DPYTHON2_INCLUDE_DIR=C:/Python27/include ^
--DOPENCV_EXTRA_MODULES_PATH=C:/OpenCV/src/opencv_contrib ^
+-DOPENCV_EXTRA_MODULES_PATH=C:/OpenCV/src/opencv_contrib/modules ^
 -G "Visual Studio 12 2013" ^
 C:/OpenCV/src/opencv
 ```
@@ -100,7 +100,7 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE ^
 -DTBB_LIB_DIR:PATH=C:/TBB/lib/intel64/vc12 ^
 -DPYTHON2_LIBRARY=C:/Python27/libs/python27.lib ^
 -DPYTHON2_INCLUDE_DIR=C:/Python27/include ^
--DOPENCV_EXTRA_MODULES_PATH=C:/OpenCV/src/opencv_contrib ^
+-DOPENCV_EXTRA_MODULES_PATH=C:/OpenCV/src/opencv_contrib/modules ^
 -G "Visual Studio 12 2013 Win64" ^
 C:/OpenCV/src/opencv
 ```
