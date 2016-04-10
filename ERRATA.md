@@ -29,3 +29,26 @@ make
 * Finally the at number 1 there is already the annotation command, which needs files that are being generated in later fases. Therefore the line could be removed in order to keep it more straightforward, since the command is returning at bullet 5.
 
 Erratum reported by *John Allen* on *March 19th, 2016*.
+
+## Page 203: erratum in the explanation of step 2 - precalculation of integral image
+
+Near the end of the page, the following line can be found
+
+ > This can take some time according to the size of your model and according to the amount of training samples, especially when    knowing that a model of 24x24 pixels can yield more than 16,000 features.
+
+In this line, the total number of features should be **160,000** instead of 16,000.
+
+Erratum reported by *LorenaGdL* on *April 10th, 2016*.
+
+## Page 200: erratum in the explanation of `-maxFalseAlarmRate` parameter
+
+At the top of the page, the following explanation can be found for this parameter
+
+ > This is the threshold that defines how much of your negative samples need to be classified as negatives before the boosting process should stop adding weak classifiers to the current stage. The default value is 0.5 and ensures that a stage of weak classifier will only do slightly better than random guessing on the negative samples. Increasing this value too much could lead to a single stage that already filters out most of your given windows, resulting in a very slow model at detection time due to the vast amount of features that need to be validated for each window. This will simply remove the large advantage of the concept of early window rejection.
+
+In this explanation 2 things should be changed:
+
+1. The sentence `This is the threshold that defines how much of your negative samples need to be classified as negatives before the boosting process should stop adding weak classifiers to the current stage.` should be changed to `This is the threshold that defines how much of your negative samples **are allowed to be classified** as positives before the boosting process should stop adding weak classifiers to the current stage.`.
+2. Then correspondingly the word `Increasing` should be replaced by `Decreasing`.
+
+Erratum reported by *LorenaGdL* on *April 10th, 2016*.
