@@ -48,7 +48,7 @@ At the top of the page, the following explanation can be found for this paramete
 
 In this explanation 2 things should be changed:
 
-1. The sentence `This is the threshold that defines how much of your negative samples need to be classified as negatives before the boosting process should stop adding weak classifiers to the current stage.` should be changed to `This is the threshold that defines how much of your negative samples **are allowed to be classified** as positives before the boosting process should stop adding weak classifiers to the current stage.`.
+1. The sentence `This is the threshold that defines how much of your negative samples need to be classified as negatives before the boosting process should stop adding weak classifiers to the current stage.` should be changed to `This is the threshold that defines how much of your negative samples are allowed to be classified as positives before the boosting process should stop adding weak classifiers to the current stage.`.
 2. Then correspondingly the word `Increasing` should be replaced by `Decreasing`.
 
 Erratum reported by *LorenaGdL* on *April 10th, 2016*.
