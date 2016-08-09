@@ -107,7 +107,23 @@ int main( int argc, const char** argv )
 
         // Now convert the data to the needed rectangles
         int amount_rectangles = atoi(line_elements[1].c_str());
-        vector<scored_rect> image_rectangles;
+        // ---------------------------------------------------------------------
+        // Small addition here to OpenCV 3 Blueprints book
+        //   --> if an image did not trigger detections it has a structure
+        //       inside a detection file like "/data/image1.png 0"
+        //   --> however this file will result in an unitialized vector of 
+        //       scored rects, yielding problems later on
+        //   --> a quick and dirty fix is to add a non-meaningfull rectangle
+        //       to make sure we have no unmeaningfull pointers dangling around
+        // ---------------------------------------------------------------------
+        vector<scored_rect> image_rectangles;        
+        if(amount_rectangles == 0){
+            scored_rect single_rectangle;
+            single_rectangle.filename = line_elements[0];
+            single_rectangle.region = Rect(0, 0, 0, 0);
+            single_rectangle.score = 0.0;
+            image_rectangles.push_back(single_rectangle);
+        }
         for(int i = 0; i < amount_rectangles; i ++){
             scored_rect single_rectangle;
             single_rectangle.filename = line_elements[0];
