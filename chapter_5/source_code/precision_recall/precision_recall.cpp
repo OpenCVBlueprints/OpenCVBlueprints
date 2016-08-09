@@ -178,6 +178,7 @@ int main( int argc, const char** argv )
                         if( (surface_overlap > 0.5 * surface_det) && (surface_overlap > 0.5 * surface_anno) && (surface_det < (1.5 * surface_anno)) && (surface_det > (0.5 * surface_anno))){
                              TP++;
                              false_positive = false;
+                             continue; // We do not need to process further, else we risk a chance of a single detection yielding 2 TP's
                         }
                     }
                     // Check if a TP was given, else a FP needs to be added
@@ -204,9 +205,9 @@ int main( int argc, const char** argv )
                         int surface_overlap = x_overlap * y_overlap;
 
                         // Rule to define what to increase - dependend on 50% overlap for a good match AND a max 50% larger detection
-                        if( (surface_overlap > 0.5 * surface_det) && (surface_overlap > 0.5 * surface_anno) ){
-                             TP++;
+                        if( (surface_overlap > 0.5 * surface_det) && (surface_overlap > 0.5 * surface_anno) && (surface_det < (1.5 * surface_anno)) && (surface_det > (0.5 * surface_anno))){
                              no_matches = false;
+                             continue; // We do not need to process further, because we already know there is a match
                         }
                     }
                 }
