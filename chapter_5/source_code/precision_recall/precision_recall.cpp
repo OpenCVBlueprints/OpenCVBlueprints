@@ -65,6 +65,7 @@ int main( int argc, const char** argv )
     // Retrieve ground truth of the algorithm
     // Stored as a collection over the images, with a collection of rectangles for each image
     // Score set to -1 since ground truth doesn't have a certainty score
+    int total_annotations = 0;
     ifstream read_ground_truth(ground_truth_file.c_str());
     string current_line;
     vector< vector<scored_rect> > ground_truth;
@@ -79,6 +80,7 @@ int main( int argc, const char** argv )
 
         // Now convert the data to the needed rectangles
         int amount_rectangles = atoi(line_elements[1].c_str());
+        total_annotations += amount_rectangles;
         vector<scored_rect> image_rectangles;
         for(int i = 0; i < amount_rectangles; i ++){
             scored_rect single_rectangle;
@@ -94,6 +96,7 @@ int main( int argc, const char** argv )
     read_ground_truth.close();
 
     // Retrieve detections of the algorithm
+    int triggers = 0, total_detections = 0;
     ifstream read_detections(detection_file.c_str());
     vector< vector<scored_rect> > detections;
     while ( getline(read_detections, current_line) ){
@@ -107,7 +110,26 @@ int main( int argc, const char** argv )
 
         // Now convert the data to the needed rectangles
         int amount_rectangles = atoi(line_elements[1].c_str());
-        vector<scored_rect> image_rectangles;
+        total_detections += amount_rectangles;
+        // ---------------------------------------------------------------------
+        // Small addition here to OpenCV 3 Blueprints book
+        //   --> if an image did not trigger detections it has a structure
+        //       inside a detection file like "/data/image1.png 0"
+        //   --> however this file will result in an unitialized vector of 
+        //       scored rects, yielding problems later on
+        //   --> a quick and dirty fix is to add a non-meaningfull rectangle
+        //       to make sure we have no unmeaningfull pointers dangling around
+        // ---------------------------------------------------------------------
+        vector<scored_rect> image_rectangles;        
+        if(amount_rectangles == 0){
+            scored_rect single_rectangle;
+            single_rectangle.filename = line_elements[0];
+            single_rectangle.region = Rect(0, 0, 0, 0);
+            single_rectangle.score = 0.0;
+            image_rectangles.push_back(single_rectangle);
+        }else{
+            triggers++;
+        }
         for(int i = 0; i < amount_rectangles; i ++){
             scored_rect single_rectangle;
             single_rectangle.filename = line_elements[0];
@@ -120,6 +142,10 @@ int main( int argc, const char** argv )
         detections.push_back(image_rectangles);
     }
     read_detections.close();
+
+    // Debugging information
+    cerr << "Annotated images: "<< ground_truth.size() << " Images that triggered detections: " << triggers << endl;
+    cerr << "#annotations: "<< total_annotations << " #detections: " << total_detections << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Now we compare the ground truth versus the detections based on
@@ -160,7 +186,7 @@ int main( int argc, const char** argv )
             for(int rectIdx = 0; rectIdx < (int)current_detections.size(); rectIdx++){
                 Rect region_det = current_detections[rectIdx].region;
                 // Only use a detection if it is equal or above a certain threshold value
-                if (current_detections[rectIdx].score >= threshold){
+                if ((current_detections[rectIdx].score >= threshold) && (region_det.area() != 0)){
                     bool false_positive = true;
                     // For each detection, see if there is a match with all of the annotations
                     for (int annoIdx = 0; annoIdx < (int)current_annotations.size(); annoIdx++){
@@ -174,10 +200,11 @@ int main( int argc, const char** argv )
                         int surface_anno = region_anno.width * region_anno.height;
                         int surface_overlap = x_overlap * y_overlap;
 
-                        // Rule to define what to increase - dependend on 50% overlap for a good match AND a max 50% larger detection
-                        if( (surface_overlap > 0.5 * surface_det) && (surface_overlap > 0.5 * surface_anno) && (surface_det < (1.5 * surface_anno)) && (surface_det > (0.5 * surface_anno))){
+                        // Rule to define what to increase - dependend on 50% overlap for a good match
+                        if( (surface_overlap > 0.5 * surface_det) && (surface_overlap > 0.5 * surface_anno) ){
                              TP++;
                              false_positive = false;
+                             continue; // We do not need to process further, else we risk a chance of a single detection yielding 2 TP's
                         }
                     }
                     // Check if a TP was given, else a FP needs to be added
@@ -203,10 +230,10 @@ int main( int argc, const char** argv )
                         int surface_anno = region_anno.width * region_anno.height;
                         int surface_overlap = x_overlap * y_overlap;
 
-                        // Rule to define what to increase - dependend on 50% overlap for a good match AND a max 50% larger detection
+                        // Rule to define what to increase - dependend on 50% overlap for a good match
                         if( (surface_overlap > 0.5 * surface_det) && (surface_overlap > 0.5 * surface_anno) ){
-                             TP++;
                              no_matches = false;
+                             continue; // We do not need to process further, because we already know there is a match
                         }
                     }
                 }
@@ -218,19 +245,23 @@ int main( int argc, const char** argv )
             }
         }
 
+	// Gives you an idea on the generated values
+        cerr << "Theshold " << threshold << " TP:" << TP << " FP:" << FP << " FN:" << FN << " ";
+
         // Now calculate the precision recall based on the TP FP FN
         // Then add both results to the curve points vector
         double precision = (double)TP / (double)(TP + FP);
         double recall = (double)TP / (double)(TP + FN);
 
         Point2f location (precision, recall);
-        curve_points.push_back( location );
-        cerr << location;
-        score_levels.push_back( threshold );
+	if(!(TP == 0 && FP == 0) && !(TP == 0 && FN == 0)){
+             curve_points.push_back( location );
+             score_levels.push_back( threshold );
+             cerr << location << endl;
+        }else{
+             cerr << "Division by zero, point ignored." << endl;
+        }
 
-        // Both elements are zero than we have a devision by zero and a point with no meaning has been added
-        if(TP == 0 && FP == 0){ curve_points.pop_back(); }
-        if(TP == 0 && FN == 0){ curve_points.pop_back(); }
     }
 
     // Now store the curvature points
