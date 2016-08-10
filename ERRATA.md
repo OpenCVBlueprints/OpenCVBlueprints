@@ -74,3 +74,18 @@ while it should be
 to correctly represent the image above.
 
 Erratum reported by *Can Ergun* on *November 22nd, 2015*.
+
+## Page 226-227: errata in the precision-recall calculation code
+
+There were several issues in the precision recall calculation code which have been fixed through [the following PR](https://github.com/OpenCVBlueprints/OpenCVBlueprints/pull/11). Things that were fixed with this update:
+
+ * Fixed the fact of double TP calculation during the second loop
+ * Fixed FN calculation
+ * Removed the 50% larger check, which is implicitly done with the 50% overlap check
+ * Applied some early loop skipping when not needed = faster processing
+ * Added some debug output for future use and testing purposes
+
+The new code can be found [here](https://github.com/OpenCVBlueprints/OpenCVBlueprints/blob/master/chapter_5/source_code/precision_recall/precision_recall.cpp).
+
+Errata reported by *Nuno Pessanha Santos* on *July 19th, 2016*.
+
