@@ -11,7 +11,7 @@ You should start by firing up a console window. The complete guide will be based
   # Start with a good compiler
   sudo apt-get install build-essential
   # Now install the required packages for installing OpenCV in Linux
-  sudo apt-get install cmake cmake-qt-gui git pkg-config libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev
+  sudo apt-get install cmake cmake-qt-gui git pkg-config libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
   # If you want Python support you should install Python and the NumPy library
   sudo apt-get install python-dev python-numpy
   # If you want some free optimization packages then run this line
