@@ -4,7 +4,7 @@ import tornado.web
 import cv2
 import sys, math, os
 
-import calibration_worker
+import calibration
 import utilities
 import numpy as np
 import matplotlib.pyplot as plt
@@ -218,6 +218,7 @@ def accumulateRotation(src, theta_x, theta_y, theta_z, timestamps, prev, current
         return src
 
     pts = []
+    pts_transformed = []
     for x in range(10):
         current_row = []
         current_row_transformed = []
@@ -232,7 +233,7 @@ def accumulateRotation(src, theta_x, theta_y, theta_z, timestamps, prev, current
                 y_timestamp = current
 
             transform = getAccumulatedRotation(src.shape[1], src.shape[0], theta_x, theta_y, theta_z, timestamps, prev, current, f, gyro_delay, gyro_drift)
-            output = cv2.perspectiveTransform(np.array([[pixel_x, pixel_y]], transform)
+            output = cv2.perspectiveTransform(np.array([[pixel_x, pixel_y]], dtype="float32"), transform)
             current_row_transformed.append(output)
 
         pts.append(current_row)
@@ -426,7 +427,7 @@ class CalibrateGyroStabilize(object):
         self.csv = csv
 
     def calibrate(self):
-        gdf = calibration_worker.GyroscopeDataFile(self.csv)
+        gdf = calibration.GyroscopeDataFile(self.csv)
         gdf.parse()
 
         signal_x = gdf.get_signal_x()
