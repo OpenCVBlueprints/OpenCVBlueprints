@@ -11,7 +11,9 @@ include_directories("${PROJECT_SOURCE_DIR}/libflandmark")
 FILE(COPY "haarcascade_frontalface_alt.xml" DESTINATION ${CMAKE_BINARY_DIR})
 FILE(COPY "flandmark_model.dat" DESTINATION ${CMAKE_BINARY_DIR})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+set(CMAKE_C_COMPILER "/usr/bin/clang")
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++ -stdlib=libstdc++")
 
 set(FACIAL_COMPONENTS_FILES facial_components.cpp dirent.h)
 add_executable(facial_components ${FACIAL_COMPONENTS_FILES})
