@@ -8,7 +8,7 @@ $ make -j5
 You should run into a message error as `xfeatures2d` will not be found. 
 All new modules are published into a new repository `https://github.com/opencv/opencv_contrib`. 
 You need to get `xfeatures2d` from `opencv_contrib`. 
-You can either add the new manually manually to your opencv installation folder or you can follow the steps as mentioned in the guide: 
+You can either add the lib manually to your opencv installation folder or you can follow the steps as mentioned in the guide: 
 
 ```
 $ cd build
