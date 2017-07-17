@@ -73,7 +73,7 @@ int main()
 {
     // Read in an input image - directly in grayscale CV_8UC1
     // This will be our test fingerprint
-    Mat input = imread("data/fingerprints/101_1.tif", IMREAD_GRAYSCALE);
+    Mat input = imread("../../../datasets/DB1_B/101_1.tif", IMREAD_GRAYSCALE);
 
     // Binarize the image, through local thresholding
     Mat input_binary;
@@ -139,7 +139,7 @@ int main()
     // You can now store the descriptor in a matrix and calculate all for each image.
     // Since we just got the hamming distance brute force matching left, we will take another image and calculate the descriptors also.
     // Removed as much overburden comments as you can find them above
-    Mat input2 = imread("/data/fingerprints/105_1.tif", IMREAD_GRAYSCALE);
+    Mat input2 = imread("../../../datasets/DB1_B/105_1.tif", IMREAD_GRAYSCALE);
     Mat input_binary2;
     threshold(input2, input_binary2, 0, 255, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
     Mat input_thinned2 = input_binary2.clone();
