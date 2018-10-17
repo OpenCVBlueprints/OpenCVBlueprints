@@ -74,6 +74,9 @@ int main( int argc, const char** argv )
     // Read in an input image - directly in grayscale CV_8UC1
     // This will be our test fingerprint
     Mat input = imread("/data/fingerprints/101_1.tif", IMREAD_GRAYSCALE);
+    if(input.empty()){
+	    cerr << "Image not read correctly. Check if path is correct!" << endl;
+    }
 
     // Binarize the image, through local thresholding
     Mat input_binary;
