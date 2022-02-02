@@ -7,16 +7,16 @@ The second paragraph on the page describes line pairs per millimeter (lp/mm) in 
 
 > Resolution is often expressed in terms of the sensor's photosite counts or the captured image's pixel counts, but at best these measurements only tell us about one limiting factor. A better, empirical measurement, which reflects all characteristics of the lens, sensor, and setup, is called line pairs per millimeter (lp/mm). This means the maximum density of black-on-white lines that the lens and camera can resolve, in a given setup. At any higher density than this, the lines in the captured image blur together. Note that lp/ mm varies with the subject's distance and the lens's settings, including the focal length (optical zoom) of a zoom lens. When you approach the subject, zoom in, or swap out a short lens for a long lens, the system should of course capture more detail! However, lp/mm does not vary when you crop (digitally zoom) a captured image.
 
-Actually, lp/mm refers to millimeters *on the image sensor's surface* (not on the subject's surface). For example, a microfilm system with a very sharp lens might resolve 250 lp/mm under optimal conditions. If the lens is focused at 1:5 magnification (one-fifth of real-life size), the microfilm system can reproduce details that are just 20 μm big when measured *on the subject's surface*:
+Actually, lp/mm refers to millimeters *on the image sensor's surface* (not on the subject's surface). For example, a microfilm system with a very sharp lens might resolve 360 lp/mm under optimal conditions. If the lens is focused at 1:5 magnification (one-fifth of real-life size), the microfilm system can reproduce details that are just 13.9 μm big when measured *on the subject's surface*:
 
 ```
-1 mm / 250 / (1/5) = 20 μm
+1 mm / 360 / (1/5) = 13.9 μm
 ```
 
-Alternatively, if the lens is focused at 1:30 (one-thirtieth of real-life sized) magnification, the system can reproduce details that are 120 μm big when measured *on the subject's surface*:
+Alternatively, if the lens is focused at 1:30 (one-thirtieth of real-life sized) magnification, the system can reproduce details that are 83.3 μm big when measured *on the subject's surface*:
 
 ```
-1 mm / 250 / (1/30) = 120 μm
+1 mm / 360 / (1/30) = 83.3 μm
 ```
 
 Ideally, lp/mm would not vary with focal length or distance to the subject. However, a real lens is optimized for a certain range of magnifications or distances to the subject. Typically, long lenses and macro lenses (which are optimized for magnification ratios close to 1:1 or real-life size) do tend to have higher resolution in terms of lp/mm. However, the relationship is not as trivial as the description on page 9 suggests.

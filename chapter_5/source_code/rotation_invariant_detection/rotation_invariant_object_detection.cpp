@@ -83,12 +83,13 @@ int main(int argc, char* argv[])
     Mat image = imread(input_image);
     int steps = max_angle / step_angle;
     vector<Mat> rotated_images;
-    // Preprocess the images already, since we will need it for detection purposes
-    cvtColor(rotated, rotated, CV_BGR2GRAY);
-    equalizeHist( rotated, rotated );
+    
     for (int i = 0; i < steps; i ++){
         // Rotate the image
         Mat rotated = image.clone();
+	// Preprocess the images already, since we will need it for detection purposes
+	cvtColor(rotated, rotated, CV_BGR2GRAY);
+	equalizeHist( rotated, rotated );
         rotate(image, (i+1)*step_angle, rotated);
         // Add to the collection of rotated and processed images
         rotated_images.push_back(rotated);
