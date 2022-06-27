@@ -93,10 +93,10 @@ def meshwarp(src, distorted_grid):
     #mapx = np.zeros(mapsize, dtype=np.float32)
     #mapy = np.zeros(mapsize, dtype=np.float32)
 
-    quads_per_row = len(distorted_grid[0]) - 1
-    quads_per_col = len(distorted_grid) - 1
-    pixels_per_row = size[1] / quads_per_row
-    pixels_per_col = size[0] / quads_per_col
+    quads_per_row = len(distorted_grid) - 1
+    quads_per_col = len(distorted_grid[0]) - 1
+    pixels_per_row = size[0] / quads_per_row
+    pixels_per_col = size[1] / quads_per_col
 
     pt_src_all = []
     pt_dst_all = []
@@ -106,15 +106,17 @@ def meshwarp(src, distorted_grid):
 
     for x in range(quads_per_row+1):
         for y in range(quads_per_col+1):
-            pt_dst_all.append([x*pixels_per_col, y*pixels_per_row])
+            pt_dst_all.append([y*pixels_per_col, x*pixels_per_row])
 
-    gx, gy = np.mgrid[0:size[1], 0:size[0]]
+    gx, gy = np.mgrid[0:size[0], 0:size[1]]
 
     import scipy
     from scipy.interpolate import griddata
-    g_out = griddata(np.array(pt_dst_all), np.array(pt_src_all), (gx, gy), method='linear')
-    mapx = np.append([], [ar[:,0] for ar in g_out]).reshape(mapsize).astype('float32')
-    mapy = np.append([], [ar[:,1] for ar in g_out]).reshape(mapsize).astype('float32')
+    g_out = griddata(np.array(pt_dst_all), np.array(pt_src_all), (gy, gx), method='linear')
+    tmp_arx = np.append([], [arx[:, 0] for arx in g_out])
+    tmp_ary = np.append([], [ary[:, 1] for ary in g_out])
+    mapx = tmp_arx.reshape(mapsize).astype('float32')
+    mapy = tmp_ary.reshape(mapsize).astype('float32')
 
     dst = cv2.remap(src, mapx, mapy, cv2.INTER_LINEAR)
     cv2.imwrite('/tmp/test.png', dst)
